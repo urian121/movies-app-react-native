@@ -16,15 +16,15 @@ Incluye splash animado, filtros visuales en el hero y secciones como Populares, 
 
 ### Requisitos
 
-- Node.js 18+
+- Node.js 20+
 - npm
 - Expo Go (dispositivo físico) o emulador Android/iOS
 
 ### Instalación
 
 ```bash
-git clone <url-del-repositorio>
-cd my-movies-app
+git clone https://github.com/urian121/movies-app-react-native
+cd movies-app-react-native
 npm install
 ```
 
