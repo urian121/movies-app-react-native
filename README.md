@@ -60,6 +60,9 @@ npm run web
 
 ## Apoya el proyecto
 
-Si este proyecto te fue útil, apóyanos dejando una estrella en el repositorio.  
-Eso nos ayuda a seguir mejorando la app y publicar más contenido.  
-¡Gracias por tu apoyo!
+✨ **Comparte este proyecto** con otros desarrolladores para que puedan beneficiarse 📢.
+
+☕ **Invítame un café o una cerveza 🍺**:
+   - [Paypal](https://www.paypal.me/iamdeveloper86) (`iamdeveloper86@gmail.com`).
+
+⚡ ¡No olvides SUSCRIBIRTE a la [Comunidad WebDeveloper](https://www.youtube.com/WebDeveloperUrianViera?sub_confirmation=1)!
