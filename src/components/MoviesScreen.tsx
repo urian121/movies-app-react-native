@@ -7,7 +7,6 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { fetchMovies } from "../api/movies";
 import { Movie } from "../types/movie";
 import { HeroBanner, getHeroHeight } from "./HeroBanner";
@@ -17,8 +16,7 @@ import { SplashLoading } from "./SplashLoading";
 // Pantalla principal con hero destacado y carruseles horizontales.
 export function MoviesScreen() {
   const { height } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
-  const heroHeight = getHeroHeight(height, insets.top);
+  const heroHeight = getHeroHeight(height);
   const scrollY = useSharedValue(0);
 
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -47,7 +45,7 @@ export function MoviesScreen() {
   const actionMovies = useMemo(
     () =>
       moviesWithPoster.filter(
-        (movie) => movie.genre.toLowerCase() === "action",
+        (movie) => String(movie.genre ?? "").toLowerCase() === "action",
       ),
     [moviesWithPoster],
   );
@@ -134,14 +132,7 @@ export function MoviesScreen() {
         contentInsetAdjustmentBehavior="never"
       >
         <Animated.View
-          style={[
-            {
-              height: heroHeight,
-              marginTop: -insets.top,
-              overflow: "hidden",
-            },
-            heroParallaxStyle,
-          ]}
+          style={[{ height: heroHeight, overflow: "hidden" }, heroParallaxStyle]}
         >
           <HeroBanner movie={featuredMovie} />
         </Animated.View>

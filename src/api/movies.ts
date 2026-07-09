@@ -12,8 +12,8 @@ const mapMovie = (movie: MovieApiItem): Movie => ({
   description: movie.description ?? "Sin descripcion",
   year: movie.year ?? 0,
   image_url: movie.image_url ?? "",
-  genre: movie.genre ?? "Sin genero",
-  stars: movie.stars ?? 0,
+  genre: String(movie.genre ?? "Sin genero"),
+  stars: Number(movie.stars ?? 0),
 });
 
 // Consulta el listado principal de peliculas y retorna datos normalizados.

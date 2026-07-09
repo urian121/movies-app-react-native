@@ -29,6 +29,7 @@
       },
       "predictiveBackGestureEnabled": false,
       "statusBar": {
+        "hidden": true,
         "translucent": true,
         "backgroundColor": "#00000000"
       }

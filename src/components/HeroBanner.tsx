@@ -1,15 +1,12 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import {
   ImageBackground,
-  Platform,
-  StatusBar,
   StyleSheet,
   Text,
   useWindowDimensions,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Movie } from "../types/movie";
 
 interface HeroBannerProps {
@@ -17,8 +14,7 @@ interface HeroBannerProps {
 }
 
 // Calcula la altura responsiva del hero segun la pantalla.
-export const getHeroHeight = (screenHeight: number, topInset: number) =>
-  screenHeight * 0.7 + topInset;
+export const getHeroHeight = (screenHeight: number) => screenHeight * 0.7;
 
 // Genera estrellas visuales segun la calificacion de la pelicula.
 const renderStars = (stars: number) => {
@@ -29,21 +25,11 @@ const renderStars = (stars: number) => {
 // Muestra la pelicula destacada con fade inferior tipo mask-image.
 export function HeroBanner({ movie }: HeroBannerProps) {
   const { width, height } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
 
-  const heroHeight = useMemo(
-    () => getHeroHeight(height, insets.top),
-    [height, insets.top],
-  );
+  const heroHeight = useMemo(() => getHeroHeight(height), [height]);
 
   const imageScale = width < 380 ? 1.24 : width < 430 ? 1.18 : 1.14;
   const titleSize = width < 380 ? "text-2xl" : "text-3xl";
-
-  useEffect(() => {
-    if (Platform.OS !== "android") return;
-    StatusBar.setTranslucent(true);
-    StatusBar.setBackgroundColor("transparent");
-  }, []);
 
   return (
     <View style={{ width: "100%", height: heroHeight }}>

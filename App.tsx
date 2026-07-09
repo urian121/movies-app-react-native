@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
+import { Platform, StatusBar as RNStatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 import { MoviesScreen } from "./src/components/MoviesScreen";
@@ -10,6 +11,14 @@ SplashScreen.preventAutoHideAsync().catch(() => null);
 // Punto de entrada de la aplicacion.
 export default function App() {
   const [isNativeSplashHidden, setIsNativeSplashHidden] = useState(false);
+
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      RNStatusBar.setHidden(true, "fade");
+      RNStatusBar.setTranslucent(true);
+      RNStatusBar.setBackgroundColor("transparent");
+    }
+  }, []);
 
   // Oculta el splash nativo y muestra el splash animado de la app.
   useEffect(() => {
@@ -26,7 +35,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <MoviesScreen />
-      <StatusBar style="light" />
+      <StatusBar hidden />
     </SafeAreaProvider>
   );
 }
